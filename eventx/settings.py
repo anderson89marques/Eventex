@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-from decouple import config
+from decouple import config, Csv
 from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -26,8 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 
 # Application definition
 
@@ -77,19 +76,17 @@ WSGI_APPLICATION = 'eventx.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 
-
-#'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'eventexDjangoDb',
-#        'USER': 'postgres',
-#        'PASSWORD': 'postgres',
-#        'HOST': '127.0.0.1',
-#        'PORT': '5432',
-#    }
-
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 DATABASES = {
-    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+    #'default2': config('DATABASE_URL', default=default_dburl, cast=dburl),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'eventexDjangoDb',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
 }
 
 

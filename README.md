@@ -1,5 +1,8 @@
 # Eventex
+
 Sistema de eventos recomendados pela morena
+
+[![Build Status](https://travis-ci.org/anderson89marques/Eventex.svg?branch=master)](https://travis-ci.org/anderson89marques/Eventex)
 
 ## Como desenvolver?
 

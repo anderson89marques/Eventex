@@ -80,9 +80,7 @@ WSGI_APPLICATION = 'eventx.wsgi.application'
 
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-DATABASES = {
-    #'default2': config('DATABASE_URL', default=default_dburl, cast=dburl),
-    'default': {
+""" 'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'eventexDjangoDb',
         'USER': 'postgres',
@@ -90,6 +88,9 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
+"""
+DATABASES = {
+    'default2': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
 
 

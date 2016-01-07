@@ -90,7 +90,7 @@ default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
     }
 """
 DATABASES = {
-    'default': config('DATABASE_URL'),
+    'default': "postgres://qedkpchcmiuwkg:62Re9O4LjYHfNp7E5KF0qM2jRH@ec2-54-204-8-224.compute-1.amazonaws.com:5432/denligam67a1qs",
 }
 
 

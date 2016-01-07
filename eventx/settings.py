@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'test_without_migrations',
     'django_extensions',
     'eventx.core',
-    'eventx.subscriptions',
+    'eventx.subscriptions.apps.SubscriptionsConfig',
 ]
 
 MIDDLEWARE_CLASSES = [

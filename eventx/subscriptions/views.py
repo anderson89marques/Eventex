@@ -1,19 +1,23 @@
 from django.conf import settings
-from django.contrib import messages
 from django.core import mail
 from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import render
+from django.shortcuts import render, resolve_url as r
 from django.template.loader import render_to_string
 from eventx.subscriptions.forms import SubscriptionForm
 from eventx.subscriptions.models import Subscription
 
 
-def subscribe(request):
+def new(request):
     """Essa view funciona como um dispatch(dispatch é como se fosse um roteador)"""
+
     if request.method == 'POST':
         return create(request)
-    else:
-        return new(request)
+
+    return empty_form(request)
+
+
+def empty_form(request):
+    return render(request, "subscription/subscription_form.html", {'form': SubscriptionForm()})
 
 
 def create(request):
@@ -31,11 +35,7 @@ def create(request):
                template_name="subscription/subscription_email.txt",
                context={'subscription': subscription})
 
-    return HttpResponseRedirect("/inscricao/{}/".format(subscription.pk))
-
-
-def new(request):
-    return render(request, "subscription/subscription_form.html", {'form': SubscriptionForm()})
+    return HttpResponseRedirect(r("subscription:detail", subscription.pk))
 
 
 def detail(request, pk):

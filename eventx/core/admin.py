@@ -1,10 +1,16 @@
 from django.contrib import admin
 
 # Register your models here.
-from eventx.core.models import Speaker, Talk
+from eventx.core.models import Speaker, Talk, Contact
+
+
+class ContactInline(admin.TabularInline):
+    model = Contact
+    extra = 1
 
 
 class SpeakerModelAdmin(admin.ModelAdmin):
+    inlines = [ContactInline]
     prepopulated_fields = {'slug': ('name',)}
     list_display = ['name',  'photo_img', 'website_link']
 
@@ -21,4 +27,5 @@ class SpeakerModelAdmin(admin.ModelAdmin):
     photo_img.short_description = 'foto'
 
 admin.site.register(Speaker, SpeakerModelAdmin)
+
 admin.site.register(Talk)

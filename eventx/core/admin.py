@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from eventx.core.models import Speaker, Talk, Contact
+from eventx.core.models import Speaker, Talk, Contact, Course
 
 
 class ContactInline(admin.TabularInline):
@@ -38,3 +38,4 @@ class SpeakerModelAdmin(admin.ModelAdmin):
 
 admin.site.register(Speaker, SpeakerModelAdmin)
 admin.site.register(Talk)
+admin.site.register(Course)
